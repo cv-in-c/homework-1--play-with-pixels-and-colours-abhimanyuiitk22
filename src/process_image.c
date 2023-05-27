@@ -6,27 +6,42 @@
 
 float get_pixel(image im, int x, int y, int c)
 {
-    // TODO Fill this in
-    return 0;
+    // TODO Flll this in
+        if (x < 0 || x >= im.w || y < 0 || y >= im.h || c < 0 || c >= im.c) {
+            return 0.0f;
+    }
+    int index = c * im.h * im.w + y * im.w + x;
+      return im.data[index];
 }
+
 
 void set_pixel(image im, int x, int y, int c, float v)
 {
-    // TODO Fill this in
+    
 }
 
 image copy_image(image im)
 {
     image copy = make_image(im.w, im.h, im.c);
     // TODO Fill this in
+    for (int y = 0; y < im.h; y++) {
+        for (int x = 0; x < im.w; x++) {
+            for (int c = 0; c < im.c; c++) {
+                copy.data[y * im.w * im.c + x * im.c + c] = im.data[y * im.w * im.c + x * im.c + c];
+            }
+        }
+    }
+
+
     return copy;
 }
 
 image rgb_to_grayscale(image im)
 {
+     // TODO Fill this in
     assert(im.c == 3);
     image gray = make_image(im.w, im.h, 1);
-    // TODO Fill this in
+   
     return gray;
 }
 
