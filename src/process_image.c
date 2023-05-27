@@ -41,6 +41,17 @@ image rgb_to_grayscale(image im)
      // TODO Fill this in
     assert(im.c == 3);
     image gray = make_image(im.w, im.h, 1);
+     for (int i = 0; i < im.w; i++) {
+    for (int j = 0; j < im.h; j++) {
+      int r = im.data[i * im.w + j * im.c + 0];
+      int g = im.data[i * im.w + j * im.c + 1];
+      int b = im.data[i * im.w + j * im.c + 2];
+
+      int gray_value = (0.299 * r) + (0.587 * g) + (0.114 * b);
+      gray.data[i * im.w + j] = gray_value;
+    }
+  }
+
    
     return gray;
 }
