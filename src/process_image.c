@@ -59,11 +59,33 @@ image rgb_to_grayscale(image im)
 void shift_image(image im, int c, float v)
 {
     // TODO Fill this in
+       int width = image_width(im);
+    int height = image_height(im);
+     for (int y = 0; y < height; y++) {
+    for (int x = 0; x < width; x++) {
+        float pixel_value = get_pixel(im, x, y, c);
+         pixel_value += v;
+           set_pixel(im, x, y, c, pixel_value);
+    }
+  }
 }
 
 void clamp_image(image im)
 {
     // TODO Fill this in
+          int width = image_width(im);
+    int height = image_height(im);
+     for (int y = 0; y < height; y++) {
+    for (int x = 0; x < width; x++) {
+        float pixel_value = image_get_pixel(im, x, y, 0);
+         if (pixel_value < 0.0) {
+        pixel_value = 0.0;
+      } else if (pixel_value > 1.0) {
+        pixel_value = 1.0;
+      }
+       image_set_pixel(im, x, y, 0, pixel_value);
+    }
+  }
 }
 
 
@@ -81,6 +103,7 @@ float three_way_min(float a, float b, float c)
 void rgb_to_hsv(image im)
 {
     // TODO Fill this in
+    
 }
 
 void hsv_to_rgb(image im)
